@@ -1,4 +1,4 @@
-package tacos.data;
+package __tacos.dataJDBC;
 
 import tacos.Ingredient;
 
