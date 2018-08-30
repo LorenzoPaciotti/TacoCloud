@@ -18,10 +18,10 @@ import javax.validation.Valid;
 
 import lombok.extern.slf4j.Slf4j;
 import tacos.Taco;
-import tacos.datajpa.IngredientRepository;
-import tacos.datajpa.TacoRepository;
 import tacos.Ingredient;
 import tacos.Ingredient.Type;
+import tacos.data.IngredientRepository;
+import tacos.data.TacoRepository;
 
 @Slf4j
 @Controller
@@ -32,8 +32,8 @@ public class DesignTacoController {
 //	private final tacos.data.IngredientRepository ingredientRepoJDBC;
 //	private tacos.data.TacoRepository designRepoJDBC;
 	
-	private final tacos.datajpa.IngredientRepository ingredientRepoJPA;
-	private tacos.datajpa.TacoRepository designRepoJPA;
+	private final tacos.data.IngredientRepository ingredientRepoJPA;
+	private tacos.data.TacoRepository designRepoJPA;
 
 	@ModelAttribute(name = "order")
 	public Order order() {
@@ -54,7 +54,7 @@ public class DesignTacoController {
 
 	//COSTRUTTORE AUTOWIRED A REPOSITORY JPA
 	@Autowired
-	public DesignTacoController(tacos.datajpa.IngredientRepository ingredientRepo, tacos.datajpa.TacoRepository designRepo) {
+	public DesignTacoController(tacos.data.IngredientRepository ingredientRepo, tacos.data.TacoRepository designRepo) {
 		this.ingredientRepoJPA = ingredientRepo;
 		this.designRepoJPA = designRepo;
 	}
