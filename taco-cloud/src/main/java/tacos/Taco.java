@@ -23,7 +23,6 @@ public class Taco {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "CREATEDAT", nullable = false, updatable = false)
 	private Date createdAt;
 
 	@NotNull

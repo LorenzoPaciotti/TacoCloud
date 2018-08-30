@@ -1,8 +1,11 @@
 package tacos;
 
+import java.awt.print.Pageable;
+
 import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -23,15 +26,27 @@ import tacos.data.OrderRepository;
 public class OrderController {
 
 	private OrderRepository orderRepo;
+	
+	private OrderProps props;
 
 	public OrderController(OrderRepository orderRepo) {
 		this.orderRepo = orderRepo;
 	}
 
 	@GetMapping("/current")
-	public String orderForm(Model model,@ModelAttribute("order") Order order) {
+	public String orderForm(Model model, @ModelAttribute("order") Order order, @AuthenticationPrincipal User user) {
 		model.addAttribute("order", order);
+		order.setUser(user);
 		return "orderForm";
+	}
+
+	@GetMapping("/list")
+	public String ordersForUser(@AuthenticationPrincipal User user, Model model) {
+
+//		Pageable pageable = (Pageable) PageRequest.of(0, props.getPageSize());
+//		model.addAttribute("orders", orderRepo.findByUserOrderByPlacedAtDesc(user, pageable));
+
+		return "orderList";
 	}
 
 	@PostMapping
@@ -39,13 +54,19 @@ public class OrderController {
 		if (errors.hasErrors()) {
 			return "orderForm";
 		}
-		
+
 		log.info("processOrder " + order);
-		
+
 		orderRepo.save(order);
 		sessionStatus.setComplete();
-		
+
 		return "redirect:/";
 	}
 
 }
+
+/*
+ * Authentication authentication =
+ * SecurityContextHolder.getContext().getAuthentication(); User user = (User)
+ * authentication.getPrincipal();
+ */

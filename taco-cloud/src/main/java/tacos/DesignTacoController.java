@@ -20,8 +20,6 @@ import lombok.extern.slf4j.Slf4j;
 import tacos.Taco;
 import tacos.Ingredient;
 import tacos.Ingredient.Type;
-import tacos.data.IngredientRepository;
-import tacos.data.TacoRepository;
 
 @Slf4j
 @Controller
@@ -77,7 +75,7 @@ public class DesignTacoController {
 	}
 
 	@PostMapping
-	public String processDesign(/*@Valid*/Taco design, Errors errors, @ModelAttribute Order order) {
+	public String processDesign(@Valid Taco design, Errors errors, @ModelAttribute Order order) {
 		// VALIDAZIONE
 //		if (errors.hasErrors()) {
 //			log.warn("************validazione non passata");
@@ -87,7 +85,6 @@ public class DesignTacoController {
 		// SALVATAGGIO CON REPOSITORY
 		log.info("INVIO A REPOSITORY TACO: " + design);
 		if (design != null) {
-//			Taco saved = designRepoJDBC.save(design);
 			Taco saved = designRepoJPA.save(design);
 			order.addDesign(saved);
 		}else {log.error("*************design ====> NULL!");}

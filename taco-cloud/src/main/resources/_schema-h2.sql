@@ -41,3 +41,15 @@ alter table Taco_Order_Tacos
 add foreign key (order_id) references Taco_Order(id);
 alter table Taco_Order_Tacos
 add foreign key (tacos_id) references Taco(id);
+
+drop table if exists tacousers;
+
+create table if not exists tacousers(
+id identity,
+username varchar(200) unique not null,
+password varchar(100) not null,
+fullname varchar(200) not null,
+street varchar(200),
+city varchar(100),
+state varchar(50),
+zip varchar(50));

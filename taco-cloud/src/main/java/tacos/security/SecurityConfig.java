@@ -33,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/design", "/orders").hasRole("USER").antMatchers("/**").permitAll().antMatchers("/h2-console/**")
 		.permitAll()
 		.and()
-		.formLogin().loginPage("/login").and().logout().logoutSuccessUrl("/");
+		.formLogin().loginPage("/login").and().logout().logoutSuccessUrl("/design");
 		
 		//PER FAR FUNZIONARE h2-console -- NON USARE IN PRODUZIONE
 		http.csrf().disable();
