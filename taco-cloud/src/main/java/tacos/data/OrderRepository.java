@@ -18,22 +18,6 @@ public interface OrderRepository extends CrudRepository<Order, Long> {
 
 }
 
-/*
- * estendendo l'interfaccia CrudRepository vengono implementati automaticamente
- * 6 metodi di interrogazione, aggiornamento, cancellazione. inoltre, viene
- * fornita la possbilità di usare DERIVED QUERY semplicemente scrivendo dei
- * metodi con una signature che rispetti le parole chiave sotto.
- */
-
-/*
- * SE VOGLIO SCRIVERE MANUALMENTE QUERY:
- * 
- * //interrogazione con query esplicita
- * 
- * @Query("order o where o.deliverycity='seattle'") list<order>
- * readordersdeliveredinseattle();
- */
-
 /* PAROLE CHIAVE SPRING DATA DERIVED QUERY METHODS */
 /*
  * List<Order> findByDeliveryZip(String deliveryZip); List<Order>

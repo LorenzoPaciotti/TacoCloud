@@ -42,13 +42,6 @@ public class DesignTacoController {
 	public Taco taco() {
 		return new Taco();
 	}
-	
-//	//COSTRUTTORE AUTOWIRED A REPOSITORY JDBC
-//	@Autowired
-//	public DesignTacoController(tacos.data.IngredientRepository ingredientRepo, tacos.data.TacoRepository designRepo) {
-//		this.ingredientRepoJDBC = ingredientRepo;
-//		this.designRepoJDBC = designRepo;
-//	}
 
 	//COSTRUTTORE AUTOWIRED A REPOSITORY JPA
 	@Autowired
@@ -61,7 +54,6 @@ public class DesignTacoController {
 	public String showDesignForm(Model model) {
 		List<Ingredient> ingredients = new ArrayList<>();
 		ingredientRepoJPA.findAll().forEach(i -> ingredients.add(i));
-//		ingredientRepoJDBC.findAll().forEach(i -> ingredients.add(i));
 
 		Type[] types = Ingredient.Type.values();
 
@@ -108,22 +100,3 @@ public class DesignTacoController {
  * will need to call out to an implementation of OrderRepository to save the
  * order.
  */
-
-//@GetMapping
-//public String showDesignForm(Model model) {
-//	List<Ingredient> ingredients = Arrays.asList(new Ingredient("FLTO", "Flour Tortilla", Type.WRAP),
-//			new Ingredient("COTO", "Corn Tortilla", Type.WRAP), new Ingredient("GRBF", "Ground Beef", Type.PROTEIN),
-//			new Ingredient("CARN", "Carnitas", Type.PROTEIN),
-//			new Ingredient("TMTO", "Diced Tomatoes", Type.VEGGIES), new Ingredient("LETC", "Lettuce", Type.VEGGIES),
-//			new Ingredient("CHED", "Cheddar", Type.CHEESE), new Ingredient("JACK", "Monterrey Jack", Type.CHEESE),
-//			new Ingredient("SLSA", "Salsa", Type.SAUCE), new Ingredient("SRCR", "Sour Cream", Type.SAUCE));
-//
-//	Type[] types = Ingredient.Type.values();
-//
-//	for (Type type : types) {
-//		model.addAttribute(type.toString().toLowerCase(), filterByType(ingredients, type));
-//	}
-//
-//	model.addAttribute("design", new Taco());
-//	return "design";
-//}

@@ -5,15 +5,15 @@ spring:
     password: 
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: none
   thymeleaf:
     cache: false
-server:
-  port: 8443
-  ssl:
-    key-store: file:///home/lorenzo/mykeys.jks
-    key-store-password: letmein
-    key-password: letmein
+#server:
+#  port: 8443
+#  ssl:
+#    key-store: file:///home/lorenzo/mykeys.jks
+#    key-store-password: letmein
+#    key-password: letmein
 logging:
   level:
     root: WARN

@@ -34,7 +34,6 @@ public class User implements UserDetails{
 	@NotBlank
 	private final String username;
 	
-	@NotBlank
 	private final String password;
 	
 	private final String fullname,street,city,state,zip;	
